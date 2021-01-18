@@ -93,7 +93,7 @@ var app = new Vue({
         },
 
         async copyAnswer(index) {
-            await navigator.clipboard.writeText(this.filteredQuestions[index].answer);
+            await navigator.clipboard.writeText(jQuery('<div>').html(this.filteredQuestions[index].answer).text());
             Vue.use(Toasted)
             Vue.toasted.show('Copied!', { 
                 theme: "toasted-primary", 
