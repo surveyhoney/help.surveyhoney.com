@@ -76,6 +76,7 @@
                         <div class="content">
                             <div class="ques-title" :class="{active: item.display}">
                                 {{item.title}}
+                                <img :class="{hidden: !item.display}" src="assets/copy.png" style="width: 20px;" @click="copyAnswer(index)"/>
                             </div>
                             <div class="ques-result" v-html="item.answer" :class="{hidden: !item.display}">
 
@@ -96,6 +97,7 @@
     <script src="https://unpkg.com/vue-router"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue-toasted"></script>
     <script src="script.js"></script>
     <script>
         function openNav() {

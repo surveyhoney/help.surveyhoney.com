@@ -90,7 +90,17 @@ var app = new Vue({
 
             this.categories = categories
             this.allQuestions = allQuestions
-        }
+        },
+
+        async copyAnswer(index) {
+            await navigator.clipboard.writeText(this.filteredQuestions[index].answer);
+            Vue.use(Toasted)
+            Vue.toasted.show('Copied!', { 
+                theme: "toasted-primary", 
+                position: "bottom-right", 
+                duration : 4000
+           });
+        },
     },
 
     computed: {
