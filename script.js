@@ -11,8 +11,8 @@ class Question {
 var router = new VueRouter({
     mode: 'history',
     routes: []
-
 });
+
 Vue.config.devtools = false
 var app = new Vue({
     el: '#app-helpdesk',
@@ -37,7 +37,7 @@ var app = new Vue({
                 }
             }
         },
- 
+
         triggerQuery: function () {
             if (this.querySearchID != '') {
                 this.searchMethod = 'query'
@@ -72,7 +72,7 @@ var app = new Vue({
         generateQuestionList: function (data) {
             var allQuestions = []
             var categories = []
-            
+
             data.forEach(function (question, index) {
                 if(index == 0) return
                 var question_id = question[0]
@@ -95,9 +95,9 @@ var app = new Vue({
         async copyAnswer(index) {
             await navigator.clipboard.writeText(jQuery('<div>').html(this.filteredQuestions[index].answer).text());
             Vue.use(Toasted)
-            Vue.toasted.show('Copied!', { 
-                theme: "toasted-primary", 
-                position: "bottom-right", 
+            Vue.toasted.show('Copied!', {
+                theme: "toasted-primary",
+                position: "bottom-right",
                 duration : 4000
            });
         },
@@ -174,14 +174,14 @@ var app = new Vue({
         this.triggerQuery()
 
         $.ajax({
-            type: "GET",  
+            type: "GET",
             url: "resources/question-bank.csv",
-            dataType: "text",       
-            success: function(response)  
+            dataType: "text",
+            success: function(response)
             {
               data = $.csv.toArrays(response);
               app.generateQuestionList(data);
-            }   
+            }
           });
 
     },
